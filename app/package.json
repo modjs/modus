@@ -1,0 +1,17 @@
+{
+    "name": "Modus",
+    "description": "GUI for Mod/Grunt",
+    "version": "0.1.0",
+    "main": "index.html",
+    "window": {
+        "icon": "app.ico",
+        "toolbar": true,
+        "frame": true,
+        "width": 800,
+        "height": 600
+    },
+    "dependencies": {
+        "modjs": "*",
+        "backbone": "*"
+    }
+}

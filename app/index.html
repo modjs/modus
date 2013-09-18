@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Modus</title>
+        <meta name="author" content="yuanyan">
+        <link href="css/main.css" rel="stylesheet">
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script src="lib/backbone.js"></script>
+        <script>
+            if(typeof require !== "undefined"){
+                global.$ = $;
+                global.Backbone = Backbone;
+                global._ = _;
+                global.gui = require('nw.gui')
+
+                window.addEventListener('load', function() {      
+                    require('./js/app.js');
+                }, false);
+
+                //show dev tools with ctrl+alt + j
+                $(document).keydown(function (e) {
+                    if (e.altKey && e.ctrlKey && (e.which === 10 || e.keyCode === 74)) {
+                        global.gui.Window.get().showDevTools();
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">  
+            <header class="clearfix">
+                <nav>
+                </nav>
+            </header> 
+            <ul class="menu">
+                <li><a href="#" class="icon-logo">Logo</a></li>
+                <li><a href="#" class="icon-archive">Archive</a></li>
+                <li><a href="#" class="icon-search">Search</a></li>
+                <li class="current"><a href="#" class="icon-pencil">Pencil</a></li>
+                <li><a href="#" class="icon-location">Location</a></li>
+                <li><a href="#" class="icon-images">Images</a></li>
+                <li><a href="#" class="icon-download">Download</a></li>
+            </ul>
+            <div class="main">
+
+            </div>    
+        </div>    
+    </body>
+</html>

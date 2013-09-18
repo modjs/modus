@@ -1,0 +1,16 @@
+// A sample Modfile
+// More info at https://github.com/modulejs/modjs/
+
+module.exports = {
+    plugins: {
+
+    },
+    tasks: {
+        mkdir: {
+            path: "demo"
+        }
+    },
+    targets : {
+        dist: "mkdir"
+    }
+};
