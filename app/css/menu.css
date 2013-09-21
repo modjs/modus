@@ -7,7 +7,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background: #f7f7f7;
+    background: #000;
 }
 
 .menu li a {
@@ -27,14 +27,14 @@
 
 .menu li a:hover,
 .menu li:first-child a{
-    background: #47a3da;
+    background: #000;
     color: #fff;
 }
 
 /* class for current item */
 .menu li.current a {
-    background: #fff;
-    color: #47a3da;
+    background: #47a3da;
+    color: #fff;
 }
 
 .menu li a:before {
@@ -53,9 +53,9 @@
 }
 
 .menu li a.icon-logo:before {
-    content: "M";
+    content: "Modus";
     font-weight: 500;
-    font-size: 200%;
+    font-size: 140%;
     font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 

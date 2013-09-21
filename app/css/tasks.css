@@ -1,11 +1,30 @@
+
+.navbar-search input {
+    width: 80%;
+    min-height: 34px;
+    padding: 7px 8px;
+    outline: none;
+    color: #333;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: all 0.15s ease-in;
+    -webkit-transition: all 0.15s ease-in 0;
+    vertical-align: middle;
+}
+
 .task-card {
     background: none repeat scroll 0 0 #888888;
-    border-top-right-radius: 1.2em;
-    color: #222222;
+    color: #FFF;
     float: left;
-    height: 160px;    
+    height: 120px;    
     width: 200px;
-    margin: 20px;
+    margin: 10px 10px 10px 0;
     display: inline-block;
     position: relative;
     overflow: hidden;
@@ -19,17 +38,17 @@
     font-size: 2.25em;
     font-weight: bold;
     right: 0.5em;
-    top: 0.5em;
+    top: 0;
 }    
 .task-card .symbol {
-    color: #FFFFFF;
-    font-size: 7.8em;
-    left: 0.2em;
+    color: #FFF;
+    font-size: 6em;
+    left: 0.1em;
     line-height: 1em;
     top: 0.4em;
 }
 .task-card .name {
-    top: 1.8em;
+    top: 1em;
     font-size: 1.1em;
     left: 0.8em;
 }
@@ -43,21 +62,51 @@
 .task-card:hover h2 {
     color: white;
 }
-.task-card.nonmetal {
-    background: none repeat scroll 0 0 #62C2CC;
+
+.bg-color-orange {
+  background-color: #f09609 !important;
 }
-.task-card.noble-gas {
-    background: none repeat scroll 0 0 #FF717E;
+
+.bg-color-purple {
+  background-color: #7b4f9d !important;
 }
-.task-card.alkali {
-    background: none repeat scroll 0 0 #E86850;
+
+.bg-color-greenDark {
+  background-color: #008641 !important;
 }
-.task-card.alkaline-earth {
-    background: none repeat scroll 0 0 #F68B1F;
+
+.bg-color-blue {
+  background-color: #2e8bcc !important;
 }
-.task-card.metalloid {
-    background: none repeat scroll 0 0 #1F7872;
+
+.bg-color-red {
+  background-color: #e51400 !important;
 }
-.task-card.metal {
-    background: none repeat scroll 0 0 #666666;
+
+.bg-color-green {
+  background-color: #339933 !important;
+}
+
+.bg-color-blueDark {
+  background-color: #20608e !important;
+}
+
+.bg-color-yellow {
+  background-color: #ffc40d !important;
+}
+
+.bg-color-pink {
+  background-color: #e671b8 !important;
+}
+
+.bg-color-darken {
+  background-color: #1c1c1c !important;
+}
+
+.bg-color-gray {
+  background-color: #555555 !important;
+}
+
+.bg-color-grayLight {
+  background-color: #999999 !important;
 }
