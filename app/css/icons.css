@@ -1,0 +1,171 @@
+@font-face {
+    font-family: 'icons';
+    src: url('../fonts/icons.svg#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+    font-family: 'icons';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-archive, .icon-code, .icon-pencil, .icon-cog, .icon-layers, .icon-signup, .icon-github, .icon-chat, .icon-info, .icon-minus, .icon-move, .icon-switch, .icon-expand, .icon-help, .icon-trashcan, .icon-link, .icon-vector, .icon-vector-2, .icon-download, .icon-refresh, .icon-checkmark, .icon-tasks, .icon-search, .icon-play, .icon-power, .icon-share, .icon-microphone, .icon-microphone-off, .icon-volume-high, .icon-volume-mute, .icon-plus, .icon-download-2, .icon-bug, .icon-save, .icon-reorder, .icon-sort, .icon-sanjit-saha-afro, .icon-vectortuts-pirate-panda, .icon-matt-hakes-spectacles, .icon-matt-hakes-moustache, .icon-server, .icon-mobile, .icon-tablet, .icon-screen, .icon-bookmark {
+    font-family: 'icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+.icon-archive:before {
+    content: "\e000";
+}
+.icon-code:before {
+    content: "\e001";
+}
+.icon-pencil:before {
+    content: "\e002";
+}
+.icon-cog:before {
+    content: "\e003";
+}
+.icon-layers:before {
+    content: "\e004";
+}
+.icon-signup:before {
+    content: "\e005";
+}
+.icon-github:before {
+    content: "\e006";
+}
+.icon-chat:before {
+    content: "\e007";
+}
+.icon-info:before {
+    content: "\e008";
+}
+.icon-minus:before {
+    content: "\e009";
+}
+.icon-move:before {
+    content: "\e00a";
+}
+.icon-switch:before {
+    content: "\e00b";
+}
+.icon-expand:before {
+    content: "\e00c";
+}
+.icon-help:before {
+    content: "\e00d";
+}
+.icon-trashcan:before {
+    content: "\e00e";
+}
+.icon-link:before {
+    content: "\e00f";
+}
+.icon-vector:before {
+    content: "\e010";
+}
+.icon-vector-2:before {
+    content: "\e011";
+}
+.icon-download:before {
+    content: "\e012";
+}
+.icon-refresh:before {
+    content: "\e013";
+}
+.icon-checkmark:before {
+    content: "\e014";
+}
+.icon-tasks:before {
+    content: "\e015";
+}
+.icon-search:before {
+    content: "\e016";
+}
+.icon-play:before {
+    content: "\e017";
+}
+.icon-power:before {
+    content: "\e018";
+}
+.icon-share:before {
+    content: "\e019";
+}
+.icon-microphone:before {
+    content: "\e01a";
+}
+.icon-microphone-off:before {
+    content: "\e01b";
+}
+.icon-volume-high:before {
+    content: "\e01c";
+}
+.icon-volume-mute:before {
+    content: "\e01d";
+}
+.icon-plus:before {
+    content: "\e01e";
+}
+.icon-download-2:before {
+    content: "\e01f";
+}
+.icon-bug:before {
+    content: "\e020";
+}
+.icon-save:before {
+    content: "\e021";
+}
+.icon-reorder:before {
+    content: "\e022";
+}
+.icon-sort:before {
+    content: "\e023";
+}
+.icon-sanjit-saha-afro:before {
+    content: "\e024";
+}
+.icon-vectortuts-pirate-panda:before {
+    content: "\e025";
+}
+.icon-matt-hakes-spectacles:before {
+    content: "\e026";
+}
+.icon-matt-hakes-moustache:before {
+    content: "\e027";
+}
+.icon-server:before {
+    content: "\e028";
+}
+.icon-mobile:before {
+    content: "\e029";
+}
+.icon-tablet:before {
+    content: "\e02a";
+}
+.icon-screen:before {
+    content: "\e02b";
+}
+.icon-bookmark:before {
+    content: "\e02c";
+}

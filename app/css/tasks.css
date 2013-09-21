@@ -1,0 +1,63 @@
+.task-card {
+    background: none repeat scroll 0 0 #888888;
+    border-top-right-radius: 1.2em;
+    color: #222222;
+    float: left;
+    height: 160px;    
+    width: 200px;
+    margin: 20px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}    
+.task-card * {
+    margin: 0;
+    position: absolute;
+}
+.task-card .number {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 2.25em;
+    font-weight: bold;
+    right: 0.5em;
+    top: 0.5em;
+}    
+.task-card .symbol {
+    color: #FFFFFF;
+    font-size: 7.8em;
+    left: 0.2em;
+    line-height: 1em;
+    top: 0.4em;
+}
+.task-card .name {
+    top: 1.8em;
+    font-size: 1.1em;
+    left: 0.8em;
+}
+
+.task-card:hover {
+    cursor: pointer;
+}
+.task-card:hover h3{
+    text-shadow: 0 0 10px white, 0 0 10px white;
+}
+.task-card:hover h2 {
+    color: white;
+}
+.task-card.nonmetal {
+    background: none repeat scroll 0 0 #62C2CC;
+}
+.task-card.noble-gas {
+    background: none repeat scroll 0 0 #FF717E;
+}
+.task-card.alkali {
+    background: none repeat scroll 0 0 #E86850;
+}
+.task-card.alkaline-earth {
+    background: none repeat scroll 0 0 #F68B1F;
+}
+.task-card.metalloid {
+    background: none repeat scroll 0 0 #1F7872;
+}
+.task-card.metal {
+    background: none repeat scroll 0 0 #666666;
+}
