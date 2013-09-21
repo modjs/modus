@@ -8,6 +8,10 @@
         <script src="lib/jquery-2.0.3.js"></script>
         <script src="lib/underscore.js"></script>
         <script src="lib/backbone.js"></script>
+        <script src="lib/jquery.mixitup.js"></script>
+        <script src="lib/jquery.shuffle.js"></script>
+        <script src="./js/logo.js"></script>
+        <script src="./js/search.js"></script>
         <script>
             if(typeof require !== "undefined"){
                 global.$ = $;
@@ -27,114 +31,90 @@
                 });
             }
         </script>
+        
     </head>
     <body>
         <div class="container">  
-            <header class="clearfix">
+            <header class="clearfix">                
                 <nav>
+                   
                 </nav>
             </header> 
             <ul class="menu">
-                <li><a href="#" class="icon-logo" title="Modus">Logo</a></li>
-                <li class="current"><a href="#" class="icon-pencil" title="Create">Create</a></li>
+                <!-- <li><a href="#" class="icon-logo" title="Modus">Logo</a></li> -->
+                <li>
+                    <div id="logo">
+                        <span class="mix" id="I"></span>
+                        <span class="mix" id="II"></span>
+                        <span class="mix" id="III"></span>
+                        <span class="mix" id="IV"></span>
+                        <span class="mix" id="V"></span>
+                        <span class="mix" id="VI"></span>
+                        <span class="mix" id="VII"></span>
+                        <span class="mix" id="VIII"></span>
+                        <span class="mix" id="IX"></span>
+                    </div>
+                </li>
+                <li><a href="#" class="icon-pencil" title="Create">Create</a></li>
                 <li><a href="#" class="icon-archive" title="Workspace">Workspace</a></li>
                 <li><a href="#" class="icon-code" title="Workflow">Workflow</a></li>
                 <li><a href="#" class="icon-server" title="Server">Server</a></li>
+                <li class="current"><a href="#" class="icon-search" title="Search">Search</a></li>
                 <li><a href="#" class="icon-cog" title="Setting">Setting</a></li>
                 <li><a href="https://github.com/modulejs/modus" class="icon-github" title="Github">Github</a></li>
             </ul>
-            <div class="main">
-                
+            <div class="main">                
                 
                 <div id="tasks-tab">
                     
                     <div>
                         <div class="navbar-search">
-                            <input type="text" placeholder="Search Plugins" autofocus="" class="search-query">
+                            <input type="text" placeholder="Search Plugins" autofocus="" class="search-query js-shuffle-search">
+                            <label>
+                                <select class="js-sort-options">
+                                    <option selected>Sorting</option>
+                                    <option value="title">Title</option>
+                                    <option value="date-created">Updated</option>
+                                </select>
+                            </label>
                         </div>
                         <div class="navbar-seperator">
-                            <div class="bg-color-orange"></div>
-                            <div class="bg-color-purple"></div>
-                            <div class="bg-color-greenDark"></div>
                             <div class="bg-color-blue"></div>
-                            <div class="bg-color-red"></div>
+                            <div class="bg-color-black"></div>
+                            <div class="bg-color-orange"></div>     
                             <div class="bg-color-green"></div>
-                            <div class="bg-color-blueDark"></div>
-                            <div class="bg-color-yellow"></div>
                         </div>
                     </div>
                     
-                    <div class="task-card bg-color-orange">
-                        <p class="number">1</p>
-                        <h3 class="symbol">isprite</h3>
-                        <h2 class="name">isprite</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-purple">
-                        <p class="number">2</p>
-                        <h3 class="symbol">zip</h3>
-                        <h2 class="name">zip</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-greenDark">
-                        <p class="number">3</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
+                    <div id="grid">
+                        <div class="task-card bg-color-orange" data-title="isprite" data-groups='["mod"]'>
+                            <p class="number">1</p>
+                            <h3 class="symbol">isprite</h3>
+                            <h2 class="name">isprite</h2>
+                        </div>
+                        
 
-                     <div class="task-card bg-color-blue">
+                         <div class="task-card bg-color-blue" data-title="zip" data-groups='["mod"]'>
+                            <p class="number">2</p>
+                            <h3 class="symbol">zip</h3>
+                            <h2 class="name">zip</h2>
+                        </div>
+                        
+                        <div class="task-card bg-color-green" data-title="tar" data-groups='["mod"]'>
+                            <p class="number">3</p>
+                            <h3 class="symbol">tar</h3>
+                            <h2 class="name">tar</h2>
+                        </div>
+                        
+
+                        <div class="task-card bg-color-black" data-title="grunt" data-groups='["mod"]'>
                         <p class="number">4</p>
-                        <h3 class="symbol">isprite</h3>
-                        <h2 class="name">isprite</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-red">
-                        <p class="number">5</p>
-                        <h3 class="symbol">zip</h3>
-                        <h2 class="name">zip</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-green">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-blueDark">
-                        <p class="number">5</p>
-                        <h3 class="symbol">zip</h3>
-                        <h2 class="name">zip</h2>
-                    </div>
-                    
-                    <div class="task-card bg-color-yellow">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div> 
-                    <div class="task-card bg-color-pink">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
-                    <div class="task-card bg-color-darken">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
-                    <div class="task-card bg-color-gray">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
-                    <div class="task-card bg-color-grayLight">
-                        <p class="number">6</p>
-                        <h3 class="symbol">tar</h3>
-                        <h2 class="name">tar</h2>
-                    </div>
-                    
-                </div>
-                
-            </div>    
+                        <h3 class="symbol">grunt</h3>
+                        <h2 class="name">grunt</h2>
+                    </div>                    
+                    </div>                
+                </div>                
+            </div>
         </div>    
     </body>
 </html>

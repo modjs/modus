@@ -1,0 +1,56 @@
+#logo {
+    margin: 23px;
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    font-size: 0;
+}
+
+#logo .mix {
+    display: inline-block; 
+    width: 8px;
+    height: 8px;
+    margin: 1px;
+    padding: 0;
+}
+
+#I {
+    background: #3c9ada;
+}
+
+#II{
+    background: #5558ce;
+}
+
+#III{
+    background: #9247cb;    
+}
+
+#IV{
+    background: #e0339c;    
+}
+
+#V{
+    background: #f63b47;    
+}
+
+#VI{
+    background: #fc672b;    
+}
+
+#VII{
+    background: #f8ca31;    
+}
+
+#VIII{
+    background: #b0de33;    
+}
+
+#IX{
+    background: #37c73d;    
+}

@@ -1,5 +1,19 @@
 @import "base.css";
 @import "icons.css";
+@import "logo.css";
 @import "menu.css";
-@import "tasks.css";
+@import "search.css";
 
+
+/* Example for media query (depends on total height of menu) */
+@media screen and (max-height: 34.9375em) { 
+
+    .menu {
+        font-size: 70%;
+    }
+    
+    #logo {
+        margin: 13px;
+    }
+
+}

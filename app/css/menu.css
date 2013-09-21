@@ -33,7 +33,7 @@
 
 /* class for current item */
 .menu li.current a {
-    background: #47a3da;
+    background: #006ecc;
     color: #fff;
 }
 
@@ -57,13 +57,4 @@
     font-weight: 500;
     font-size: 140%;
     font-family: 'Lato', Calibri, Arial, sans-serif;
-}
-
-/* Example for media query (depends on total height of menu) */
-@media screen and (max-height: 34.9375em) { 
-
-    .menu {
-        font-size: 70%;
-    }
-
 }
