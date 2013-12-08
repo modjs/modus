@@ -18,6 +18,10 @@
     clear: both;
 }
 
+.hide {
+    visibility: hidden;
+}
+
 body, html { 
     font-size: 100%;
     padding: 0;
@@ -45,7 +49,7 @@ a:hover {
     width: 90%;
     max-width: 70em;
     margin: 0 auto;
-    padding: 0 4em 3.125em 6em;
+    padding: 0;
 }
 
 .main {

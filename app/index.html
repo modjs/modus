@@ -1,120 +1,144 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Modus</title>
-        <meta name="author" content="yuanyan">
-        <link href="css/main.css" rel="stylesheet">
-        <script src="lib/jquery-2.0.3.js"></script>
-        <script src="lib/underscore.js"></script>
-        <script src="lib/backbone.js"></script>
-        <script src="lib/jquery.mixitup.js"></script>
-        <script src="lib/jquery.shuffle.js"></script>
-        <script src="./js/logo.js"></script>
-        <script src="./js/search.js"></script>
-        <script>
-            if(typeof require !== "undefined"){
-                global.$ = $;
-                global.Backbone = Backbone;
-                global._ = _;
-                global.gui = require('nw.gui')
+<head>
+    <meta charset="utf-8">
+    <title>Modus</title>
+    <meta name="author" content="yuanyan">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="lib/jquery-2.0.3.js"></script>
+    <script src="lib/lodash.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="lib/list.js"></script>
+    <script src="lib/md5.js"></script>
+    <script src="lib/jquery.mixitup.js"></script>
+    <script src="lib/jquery.timeago.js"></script>
+    <script src="lib/bootstrap-dropdown.js"></script>
+    <script src="./js/logo.js"></script>
+    <script src="./js/search.js"></script>
+    <script>
+        if (typeof require !== "undefined") {
+            global.$ = $;
+            global.Backbone = Backbone;
+            global._ = _;
+            global.gui = require('nw.gui')
 
-                window.addEventListener('load', function() {      
-                    require('./js/app.js');
-                }, false);
+            window.addEventListener('load', function () {
+                require('./js/app.js');
+            }, false);
 
-                //show dev tools with ctrl+alt + j
-                $(document).keydown(function (e) {
-                    if (e.altKey && e.ctrlKey && (e.which === 10 || e.keyCode === 74)) {
-                        global.gui.Window.get().showDevTools();
-                    }
-                });
-            }
-        </script>
-        
-    </head>
-    <body>
-        <div class="container">  
-            <header class="clearfix">                
-                <nav>
-                   
-                </nav>
-            </header> 
-            <ul class="menu">
-                <!-- <li><a href="#" class="icon-logo" title="Modus">Logo</a></li> -->
-                <li>
-                    <div id="logo">
-                        <span class="mix" id="I"></span>
-                        <span class="mix" id="II"></span>
-                        <span class="mix" id="III"></span>
-                        <span class="mix" id="IV"></span>
-                        <span class="mix" id="V"></span>
-                        <span class="mix" id="VI"></span>
-                        <span class="mix" id="VII"></span>
-                        <span class="mix" id="VIII"></span>
-                        <span class="mix" id="IX"></span>
-                    </div>
-                </li>
-                <li><a href="#" class="icon-pencil" title="Create">Create</a></li>
-                <li><a href="#" class="icon-archive" title="Workspace">Workspace</a></li>
-                <li><a href="#" class="icon-code" title="Workflow">Workflow</a></li>
-                <li><a href="#" class="icon-server" title="Server">Server</a></li>
-                <li class="current"><a href="#" class="icon-search" title="Search">Search</a></li>
-                <li><a href="#" class="icon-cog" title="Setting">Setting</a></li>
-                <li><a href="https://github.com/modulejs/modus" class="icon-github" title="Github">Github</a></li>
-            </ul>
-            <div class="main">                
-                
-                <div id="tasks-tab">
-                    
-                    <div>
-                        <div class="navbar-search">
-                            <input type="text" placeholder="Search Plugins" autofocus="" class="search-query js-shuffle-search">
-                            <label>
-                                <select class="js-sort-options">
-                                    <option selected>Sorting</option>
-                                    <option value="title">Title</option>
-                                    <option value="date-created">Updated</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="navbar-seperator">
-                            <div class="bg-color-blue"></div>
-                            <div class="bg-color-black"></div>
-                            <div class="bg-color-orange"></div>     
-                            <div class="bg-color-green"></div>
-                        </div>
-                    </div>
-                    
-                    <div id="grid">
-                        <div class="task-card bg-color-orange" data-title="isprite" data-groups='["mod"]'>
-                            <p class="number">1</p>
-                            <h3 class="symbol">isprite</h3>
-                            <h2 class="name">isprite</h2>
-                        </div>
-                        
+            //show dev tools with ctrl+alt + j
+            $(document).keydown(function (e) {
+                if (e.altKey && e.ctrlKey && (e.which === 10 || e.keyCode === 74)) {
+                    global.gui.Window.get().showDevTools();
+                }
+            });
+        }
+    </script>
 
-                         <div class="task-card bg-color-blue" data-title="zip" data-groups='["mod"]'>
-                            <p class="number">2</p>
-                            <h3 class="symbol">zip</h3>
-                            <h2 class="name">zip</h2>
-                        </div>
-                        
-                        <div class="task-card bg-color-green" data-title="tar" data-groups='["mod"]'>
-                            <p class="number">3</p>
-                            <h3 class="symbol">tar</h3>
-                            <h2 class="name">tar</h2>
-                        </div>
-                        
+</head>
+<body>
+<div class="container">
+    <header class="clearfix">
+        <nav>
 
-                        <div class="task-card bg-color-black" data-title="grunt" data-groups='["mod"]'>
-                        <p class="number">4</p>
-                        <h3 class="symbol">grunt</h3>
-                        <h2 class="name">grunt</h2>
-                    </div>                    
-                    </div>                
-                </div>                
+        </nav>
+    </header>
+    <ul class="menu">
+        <!-- <li><a href="#" class="icon-logo" title="Modus">Logo</a></li> -->
+        <li>
+            <div id="logo">
+                <span class="mix" id="I"></span>
+                <span class="mix" id="II"></span>
+                <span class="mix" id="III"></span>
+                <span class="mix" id="IV"></span>
+                <span class="mix" id="V"></span>
+                <span class="mix" id="VI"></span>
+                <span class="mix" id="VII"></span>
+                <span class="mix" id="VIII"></span>
+                <span class="mix" id="IX"></span>
             </div>
-        </div>    
-    </body>
+        </li>
+        <li><a href="#" class="icon-pencil" title="Create">Create</a></li>
+        <li><a href="#" class="icon-archive" title="Workspace">Workspace</a></li>
+        <li><a href="#" class="icon-code" title="Workflow">Workflow</a></li>
+        <li><a href="#" class="icon-server" title="Server">Server</a></li>
+        <li class="current"><a href="#search" class="icon-search" title="Search">Search</a></li>
+        <li><a href="#" class="icon-cog" title="Setting">Setting</a></li>
+        <li><a href="https://github.com/modulejs/modus" class="icon-github" title="Github">Github</a></li>
+    </ul>
+    <div class="main">
+
+
+        <section id="project">
+
+        </section>
+
+
+        <section id="search">
+
+            <div>
+                <div class="navbar-search">
+                    <input type="text" placeholder="Search Plugins" autofocus="" class="search-query js-shuffle-search">
+                    <div class="btn-group dropdown">
+                        <button data-toggle="dropdown" class="btn btn-large dropdown-toggle"><span
+                                class="choice">Version</span><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Title</a></li>
+                            <li><a href="#" data-sort-desc="true">Modified</a></li>
+                            <!--li<a href="#" data-sort-desc="true">Stars</a>-->
+                            <!--li<a href="#" data-sort-desc="true">Forks</a>-->
+                            <li><a href="#">Author</a></li>
+                            <li><a href="#" data-sort-desc="true">Version</a></li>
+                            <li><a href="#" data-sort-desc="true">Downloads</a></li>
+                        </ul>
+                    </div>
+                    <div class="contrib-only"><label class="checkbox">Show <strong>contrib</strong> plugins first<input
+                            id="grunt-contrib-top" type="checkbox"></label></div>
+                </div>
+                <!--<div class="navbar-seperator">-->
+                <!--<div class="bg-color-blue"></div>-->
+                <!--<div class="bg-color-black"></div>-->
+                <!--<div class="bg-color-orange"></div>-->
+                <!--<div class="bg-color-green"></div>-->
+                <!--</div>-->
+            </div>
+
+            <div id="grunt-plugins-contrib" class="plugin-list">
+            </div>
+
+            <div id="grunt-plugins-all" class="plugin-list">
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<!--{"name":"aged","description":"Small utility returning grunt file filter by last modified age","author":{"name":"Gleb-->
+<!--Bahmutov","email":"gleb.bahmutov@gmail.com"},"github":"git://github.com/bahmutov/aged.git","keywords":["gruntplugin","grunt","time","utility"],"time":{"modified":"2013-12-08T05:49:13.301Z","created":"2013-12-06T05:32:44.868Z"},"downloads":8}-->
+
+<script id="grunt-plugins-template" type="text/template">
+<ul class="list">
+<% _.each(modules, function (el) { %>
+<li class="plugin <%= el.isContrib ? 'contrib' : '' %>" data-title="<%- el.displayName %>" data-group='["grunt"]'>
+<span class="name-description">
+<a class="title" href="https://npmjs.org/package/<%- el.name %>"><%- el.displayName %></a>
+<% if (el.author) { %>
+    <img class="avatar <%= el.author.name === 'zzzz'? 'author-hide' : '' %>"
+         data-src="<%= el.author.email && ('http://www.gravatar.com/avatar/'+ md5(el.author.email) +'?s=23')%>">
+    <span class="author <%= el.author.name === 'zzzz'? 'author-hide' : '' %>"> by <%= el.author.name %></span>
+<% } else { %>
+<span class="author"></span>
+<% } %>
+<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
+</span><span class="summary">
+<span class="modified"><span>Modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
+<span class="gruntVersion"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
+<span class="downloads"><span><%- el.downloads %></span> downloads in last 30 days</span>
+</span>
+</li>
+<% }); %>
+</ul>
+</script>
+
+</body>
 </html>

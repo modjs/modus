@@ -1,8 +1,11 @@
+.navbar-search {
+    min-width: 650px;
+}
 
-.navbar-search input {
+.navbar-search input.search-query {
     width: 80%;
     min-height: 34px;
-    padding: 7px 8px;
+    padding: 5px 8px;
     outline: none;
     color: #333;
     background-color: #fff;
@@ -10,7 +13,7 @@
     background-position: right center;
     border: 1px solid #ccc;
     border-radius: 3px;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     transition: all 0.15s ease-in;
@@ -19,52 +22,59 @@
 }
 
 /* The CSS */
-.navbar-search select {
-    width: 100px;
-    min-height: 34px;
-    padding: 7px;
-    margin: 0;
-    box-sizing: border-box;
-    border-radius: 3px;
-    background-color: #fff;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
-    color: rgb(169, 169, 169);
-    border: 1px solid #ccc;
-    outline:none;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-appearance:none;
-    appearance:none;
-    cursor:pointer;
-}
+/*.navbar-search select {*/
+    /*width: 100px;*/
+    /*min-height: 34px;*/
+    /*padding: 7px;*/
+    /*margin: 0;*/
+    /*box-sizing: border-box;*/
+    /*border-radius: 3px;*/
+    /*background-color: #fff;*/
+    /*box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);*/
+    /*color: rgb(169, 169, 169);*/
+    /*border: 1px solid #ccc;*/
+    /*outline: none;*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    /*-webkit-appearance: none;*/
+    /*appearance: none;*/
+    /*cursor: pointer;*/
+/*}*/
 
-.navbar-search label { position:relative }
-.navbar-search label:after {
-    content:'<>';
-    font: 11px "Consolas", monospace;
-    color: #aaa;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: 8px; 
-    top: 4px;
-    padding:0 0 2px;
-    position:absolute;
-    pointer-events:none;
-}
-.navbar-search label:before {
-    content:'';
-    right:6px; top:0px;
-    width:20px; height:20px;
-    background: #fff;
-    position:absolute;
-    pointer-events:none;
-    display:block;
-}
+/*.navbar-search label {*/
+    /*position: relative*/
+/*}*/
+
+/*.navbar-search label:after {*/
+    /*content: '<>';*/
+    /*font: 11px "Consolas", monospace;*/
+    /*color: #aaa;*/
+    /*-webkit-transform: rotate(90deg);*/
+    /*transform: rotate(90deg);*/
+    /*right: 8px;*/
+    /*top: 4px;*/
+    /*padding: 0 0 2px;*/
+    /*position: absolute;*/
+    /*pointer-events: none;*/
+/*}*/
+
+/*.navbar-search label:before {*/
+    /*content: '';*/
+    /*right: 6px;*/
+    /*top: 0px;*/
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*background: #fff;*/
+    /*position: absolute;*/
+    /*pointer-events: none;*/
+    /*display: block;*/
+/*}*/
 
 .navbar-seperator {
     margin: 10px 0;
     font-size: 0;
 }
+
 .navbar-seperator div {
     display: inline-block;
     margin: 0;
@@ -73,79 +83,161 @@
     width: 20%;
 }
 
-.task-card {
-    background: none repeat scroll 0 0 #888888;
-    color: #FFF;
-    float: left;
-    height: 120px;    
-    width: 200px;
-    margin: 10px 10px 10px 0;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-}    
-.task-card * {
+.plugin-list ul {
+    list-style: none;
     margin: 0;
+    padding: 0;
+}
+
+.plugin {
+    position: relative;
+    float: left;
+    width: 100%;
+    min-width: 650px;
+    border-radius: 4px;
+    border: 1px solid white;
+    box-shadow: 0px 1px 1px 0px #b9bdc6;
+    background-color: #f9fafa;
+    overflow: hidden;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.plugin:hover {
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 0px #b9bdc6;
+}
+
+.plugin:active {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.plugin .name-description {
+    width: 54%;
+    display: inline-block;
+    margin-left: 5%;
+    vertical-align: top;
+}
+
+.plugin .name-description .title {
+    line-height: 1;
+    font-size: 1.16667em;;
+    font-weight: 400;
+    color: #333;
+    margin-right: 5px;
+}
+
+.plugin .name-description .author {
+    font-size: 0.8em;
+}
+
+.plugin .name-description .avatar {
+    margin-right: 15px;
+    border-radius: 23px;
+}
+
+.plugin .name-description .desc {
+    line-height: 24px;
+    display: block;
+}
+
+.plugin .summary {
+    width: 40%;
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+}
+
+.plugin .summary .modified,
+.plugin .summary .stars,
+.plugin .summary .forks,
+.plugin .summary .version,
+.plugin .summary .downloads {
+    display: inline-block;
+}
+
+.plugin .summary .modified span,
+.plugin .summary .stars span,
+.plugin .summary .forks span,
+.plugin .summary .version span,
+.plugin .summary .downloads span {
+    font-weight: 500;
+    margin-right: 0.2em;
+}
+
+.plugin .summary .modified {
+    display: block;
+}
+
+.plugin .summary .stars {
+    margin-right: 10px;
+}
+
+.plugin.contrib:before {
     position: absolute;
-}
-.task-card .number {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 2.25em;
-    font-weight: bold;
-    right: 0.5em;
-    top: 0;
-}    
-.task-card .symbol {
-    color: #FFF;
-    font-size: 6em;
-    left: 0.1em;
-    line-height: 1em;
-    top: 0.4em;
-}
-.task-card .name {
-    top: 1em;
-    font-size: 1.1em;
-    left: 0.8em;
+    background-color: #333;
+    width: 32px;
+    height: 39px;
+    left: 8px;
+    top: -1px;
+    content: "";
 }
 
-.task-card:hover {
-    cursor: pointer;
-}
-.task-card:hover h3{
-    text-shadow: 0 0 10px white, 0 0 10px white;
-}
-.task-card:hover h2 {
+.plugin.contrib:after {
+    font-family: 'icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\e018";
+    position: absolute;
+    left: .5em;
+    top: .5em;
     color: white;
+    font-size: 1.5em;
 }
 
-.bg-color-orange {
-  background-color: #ffae00 !important;
+.plugin.contrib .name-description:before {
+    content: "";
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 10px solid #333;
+    width: 0px;
+    height: 0px;
+    left: 8px;
+    top: 38px;
+    position: absolute;
 }
 
 .bg-color-blue {
-  background-color: #006ecc !important;
-}
-
-.bg-color-green {
-  background-color: #17aa56 !important;
-}
-
-.bg-color-black {
-  background-color: #242424 !important;
-}
-
-.bg-color-purple {
-  background-color: #7b4f9d !important;
-}
-
-.bg-color-yellow {
-  background-color: #ffc40d !important;
-}
-
-.bg-color-pink {
-  background-color: #e671b8 !important;
+    background-color: #006ecc !important;
 }
 
 .bg-color-gray {
-  background-color: #555555 !important;
+    background-color: #555555 !important;
+}
+
+.bg-color-orange {
+    background-color: #ffae00 !important;
+}
+
+.bg-color-green {
+    background-color: #17aa56 !important;
+}
+
+.bg-color-black {
+    background-color: #242424 !important;
+}
+
+.bg-color-purple {
+    background-color: #7b4f9d !important;
+}
+
+.bg-color-yellow {
+    background-color: #ffc40d !important;
+}
+
+.bg-color-pink {
+    background-color: #e671b8 !important;
 }

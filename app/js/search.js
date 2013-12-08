@@ -1,104 +1,173 @@
 function initSearch() {
     'use strict';
-    
-    var $grid = $('#grid')
-        , $filterOptions = $('.js-filter-options')
-        // , $sizer = $grid.find('.js-shuffle__sizer');
-        
-  // Set up button clicks
-  function setupFilters() {
-    var $btns = $filterOptions.children();
-    $btns.on('click', function() {
-      var $this = $(this),
-          isActive = $this.hasClass( 'active' ),
-          group = isActive ? 'all' : $this.data('group');
 
-      // Hide current label, show current label in title
-      if ( !isActive ) {
-        $('.js-filter-options .active').removeClass('active');
-      }
+    function loadPlugins(){
 
-      $this.toggleClass('active');
+        // A list of grunt plugins that have wronged!
+        var bannedPlugins = [
+            'grunt-contrib-jst-2', // Reason: unofficial contrib plugin
+            'loadnpmtasks'         // Reason: not a plugin
+        ];
 
-      // Filter elements
-      $grid.shuffle( 'shuffle', group );
-    });
+        // previous url: http://grunt-plugin-list.herokuapp.com
+        $.getJSON('http://gruntjs.com/plugin-list', function (modules) {
+            // remove grunt from the plugin name
+            modules = _.map(modules, function (el) {
+                el.displayName = el.name.replace('grunt-', '');
+                el.isContrib = /^contrib/.test(el.displayName);
+                if (!el.author) {
+                    // TODO: update this, temporary way to sort out no author names
+                    el.author = {};
+                    el.author.name = 'Grunt Contributor';
+                }
+                return el;
+            });
 
-    $btns = null;
-  }
+            // filter out contrib plugins not created by the Grunt Team
+            modules = _.filter(modules, function (el) {
+                return el.isContrib ? el.author && el.author.name === 'Grunt Team' : true;
+            });
 
-  function setupSorting() {
-    // Sorting options
-    $('.js-sort-options').on('change', function() {
-      var sort = this.value,
-          opts = {};
+            modules = _.filter(modules, function (el) {
+                return $.inArray(el.name, bannedPlugins) == -1;
+            });
 
-      // We're given the element wrapped in jQuery
-      if ( sort === 'updated' ) {
-        opts = {
-          reverse: true,
-          by: function($el) {
-            return $el.data('updated');
-          }
-        };
-      } else if ( sort === 'title' ) {
-        opts = {
-          by: function($el) {
-            return $el.data('title').toLowerCase();
-          }
-        };
-      }
+            var $contribCheck = $('#grunt-contrib-top'),
+                $pluginsTemplate = $('#grunt-plugins-template'),
+                $pluginsContrib = $('#grunt-plugins-contrib'),
+                $searchQuery = $('.search-query');
 
-      // Filter elements
-      $grid.shuffle('sort', opts);
-    });
-  }
+            var contribModules = _.filter(modules, function (el) {
+                return !!(/^grunt-contrib/.test(el.name));
+            });
 
-  function setupSearching() {
-    // Advanced filtering
-    $('.js-shuffle-search').on('keyup change', function() {
-      var val = this.value.toLowerCase();
-      $grid.shuffle('shuffle', function($el, shuffle) {
 
-        // Only search elements in the current group
-        if (shuffle.group !== 'all' && $.inArray(shuffle.group, $el.data('groups')) === -1) {
-          return false;
-        }
+            var allModules = _.sortBy(modules, function (el) {
+                return el.name;
+            });
 
-        var text = $.trim( $el.find('.name').text() ).toLowerCase();
-        return text.indexOf(val) !== -1;
-      });
-    });
-  }
+            var contribTpl = _.template($pluginsTemplate.html(), {
+                modules: contribModules
+            });
 
-    // None of these need to be executed synchronously
-    setTimeout(function() {
-        // setupFilters();
-        setupSorting();
-        setupSearching();
-    }, 100);
+            var allTpl = _.template($pluginsTemplate.html(), {
+                modules: allModules
+            });
 
-    // You can subscribe to custom events. To receive the loading and done events,
-    // you must subscribe to them before initializing the plugin, otherwise they will
-    // fire before you have subscribed to them
-    // shrink, shrunk, filter, filtered, sorted, load, done
-    $grid.on('loading.shuffle done.shuffle shrink.shuffle shrunk.shuffle filter.shuffle filtered.shuffle sorted.shuffle layout.shuffle', function(evt, shuffle) {
-      // Make sure the browser has a console
-      if ( window.console && window.console.log && typeof window.console.log === 'function' ) {
-        console.log( 'Shuffle:', evt.type );
-      }
-    });
+            $('#loading').hide();
 
-    // instantiate the plugin
-    $grid.shuffle({
-      itemSelector: '.task-card',
-      // sizer: $sizer
-    });
+            $searchQuery.val('');
+
+            $pluginsContrib.append(contribTpl);
+            $('#grunt-plugins-all').append(allTpl);
+
+            var list2 = new List('grunt-plugins-contrib', {
+                valueNames: [
+                    'title',
+                    'desc',
+                    'author',
+                    'modified',
+                    'gruntVersion',
+                    'downloads'
+                ],
+                page: 9999,
+                searchClass: 'search-query'
+            });
+
+            var list = new List('grunt-plugins-all', {
+                valueNames: [
+                    'title',
+                    'desc',
+                    'author',
+                    'modified',
+                    'gruntVersion',
+                    'downloads'
+                ],
+                page: 9999,
+                searchClass: 'search-query'
+            });
+
+            var searchTimer;
+            var baseURL = document.URL.split('/').slice(0,4).join('/');
+            $searchQuery.removeProp('disabled').focus()
+                .on('submit', false)
+                .on('keyup paste', function () {
+                    // disable contrib first, if searching
+                    if ($contribCheck.is(':checked')) $contribCheck.trigger('click');
+                    var query = $(this).val();
+                    list.search( query );
+                    // wait .75 seconds to update location so it's not every keystroke
+                    clearTimeout(searchTimer);
+                    searchTimer = setTimeout(function () {
+                        if (history && history.pushState) history.pushState({ page: query }, query, baseURL+'/'+query );
+                    },750);
+                });
+
+            $('#grunt-plugins-all .modified time, #grunt-plugins-contrib .modified time').timeago();
+
+            $contribCheck.change(function() {
+                if ($contribCheck.is(':checked')) {
+                    $pluginsContrib.fadeIn();
+                    list.filter(function (el) {
+                        return !(/^contrib/.test(el.values().title));
+                    });
+                } else {
+                    $pluginsContrib.fadeOut();
+                    list.filter();
+                }
+
+            }).trigger('click');
+
+            $('.dropdown').on('click', 'ul a',function () {
+                var text = $(this).text();
+                var sortDesc = $(this).data('sort-desc');
+                var lastSortTitle = $('.dropdown-toggle .choice').text();
+                var sortInverse = lastSortTitle === text ? $(this).data('sort-inverse') : false;
+                var isAsc = sortInverse ? sortDesc : !sortDesc;
+
+                $(this).data('sort-inverse', !sortInverse);
+                var drop = $(this).closest('.dropdown');
+                drop.find('.choice').text(text);
+                drop.removeClass('open');
+
+                if (text === "Version") {
+                    text = "gruntVersion";
+                } else {
+                    text = text.toLowerCase();
+                }
+                list.sort(text, { asc: isAsc });
+                list2.sort(text, { asc: isAsc });
+
+                return false;
+            });
+
+
+            // update query value on popstate
+//            $(window).on('popstate', function () {
+//                if(history.state) {
+//                    $searchQuery.val(history.state.page);
+//                } else {
+//                    $searchQuery.val('');
+//                }
+//                // execute the search
+//                list.search( $searchQuery.val() );
+//            });
+
+            // url plugin search, search grunt plugins using /plugins/[query]
+//            var url = document.URL.split('/');
+//            if (url[4] && url[4].length > 1) {
+//                $contribCheck.trigger('click');
+//                $searchQuery.val(url[4]).keyup();
+//            }
+        });
+    }
+
+    loadPlugins();
 
     // Destroy it! o_O
     // $grid.shuffle('destroy');
 }
 
-$(document).ready(function() {
-  initSearch();
+$(document).ready(function () {
+    initSearch();
 });

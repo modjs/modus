@@ -1,9 +1,9 @@
+@import "bootstrap.css";
 @import "base.css";
 @import "icons.css";
 @import "logo.css";
 @import "menu.css";
 @import "search.css";
-
 
 /* Example for media query (depends on total height of menu) */
 @media screen and (max-height: 34.9375em) { 
